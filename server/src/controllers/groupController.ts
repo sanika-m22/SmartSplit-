@@ -1,6 +1,8 @@
 import { Response } from 'express';
+import mongoose from 'mongoose';
 import { AuthRequest } from '../middleware/auth.js';
 import Group from '../models/Group.js';
+import Expense from '../models/Expense.js';
 
 export const createGroup = async (req: AuthRequest, res: Response) => {
   try {
@@ -46,7 +48,7 @@ export const joinGroup = async (req: AuthRequest, res: Response) => {
 
 export const getUserGroups = async (req: AuthRequest, res: Response) => {
   try {
-    const groups = await Group.find({ members: req.userId }).populate('members', 'name email avatar');
+    const groups = await Group.find({ members: req.userId as string }).populate('members', 'name email avatar');
     res.status(200).json(groups);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching groups', error });
@@ -65,7 +67,7 @@ export const getGroupDetails = async (req: AuthRequest, res: Response) => {
 
 export const deleteGroup = async (req: AuthRequest, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id as string;
     const group = await Group.findById(id);
 
     if (!group) {

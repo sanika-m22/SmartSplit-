@@ -6,14 +6,14 @@ import { AuthRequest } from '../middleware/auth.js';
 export const getExpenses = async (req: AuthRequest, res: Response) => {
   try {
     // First, find all groups the user is a member of
-    const userGroups = await Group.find({ members: req.userId }).select('_id');
+    const userGroups = await Group.find({ members: req.userId as string }).select('_id');
     const activeGroupIds = userGroups.map(g => g._id);
 
     const expenses = await Expense.find({
       groupId: { $in: activeGroupIds },
       $or: [
-        { paidBy: req.userId },
-        { 'splitAmong.user': req.userId }
+        { paidBy: req.userId as string },
+        { 'splitAmong.user': req.userId as string }
       ]
     }).populate('paidBy', 'name avatar').populate('splitAmong.user', 'name avatar');
 
