@@ -62,7 +62,8 @@ export const Dashboard: React.FC = () => {
         } else {
           const { data: allExpenses } = await fetchExpenses();
           expenseData = allExpenses;
-          userData = []; // Need to fetch all group members or just show user for global dashboard
+          const { data: allUsers } = await fetchUsers();
+          userData = allUsers;
           setGroup(null);
         }
         
