@@ -1,0 +1,129 @@
+.insightsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.aiBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 1rem;
+  background: linear-gradient(135deg, rgba(249, 200, 236, 0.3) 0%, rgba(147, 172, 220, 0.3) 100%);
+  color: var(--color-primary);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(249, 200, 236, 0.5);
+}
+
+.insightsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.insightCard {
+  background: var(--color-surface);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.iconWrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardHeader h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.cardBody p:first-child {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.cardBody p:last-child {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.trendIndicator {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.up {
+  color: #22c55e;
+  font-weight: 700;
+}
+
+.mockProgress {
+  height: 6px;
+  background: #f0f0f0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--color-secondary);
+  border-radius: 3px;
+}
+
+.analyticsSection {
+  margin-top: 1rem;
+}
+
+.mockChartsGrid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .insightsPage {
+    padding: 1rem;
+    padding-bottom: 5rem;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .insightsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .mockChartsGrid {
+    grid-template-columns: 1fr;
+  }
+}

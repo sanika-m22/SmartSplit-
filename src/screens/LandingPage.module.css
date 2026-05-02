@@ -1,0 +1,131 @@
+.landingContainer {
+  min-height: 100vh;
+  background-color: #FDFBF7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.backgroundGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(249, 200, 236, 0.2) 0%, rgba(147, 172, 220, 0.1) 50%, transparent 100%);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.heroContent {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.logoSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logoIcon {
+  color: #EC4899; /* Vibrant Pink - visible but definitely pink */
+  filter: drop-shadow(0 4px 6px rgba(236, 72, 153, 0.2));
+}
+
+.appTitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.primaryBtn, .secondaryBtn {
+  flex: 1;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2.5rem 2rem;
+  border-radius: 28px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.primaryBtn {
+  background: white;
+  color: var(--color-primary);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.secondaryBtn {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--color-primary);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+}
+
+.primaryBtn:hover {
+  background: var(--color-primary);
+  color: white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.secondaryBtn:hover {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+  .appTitle {
+    font-size: 3.5rem;
+  }
+  
+  .actionButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .primaryBtn, .secondaryBtn {
+    width: 100%;
+    max-width: 100%;
+    padding: 2rem;
+  }
+}

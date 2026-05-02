@@ -1,0 +1,161 @@
+.authContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: var(--color-background);
+  position: relative;
+  overflow: hidden;
+}
+
+.backgroundGlow {
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(230, 208, 122, 0.15) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.authCard {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 3rem;
+  border-radius: 2rem;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.authHeader {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoCircle {
+  width: 64px;
+  height: 64px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.5rem;
+}
+
+.authHeader h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.authHeader p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.inputGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 1.25rem;
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 1rem 1.25rem 1rem 3.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.02);
+}
+
+.submitBtn {
+  background: var(--color-primary);
+  color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+.submitBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.switchMode {
+  text-align: center;
+}
+
+.switchMode button {
+  background: transparent;
+  border: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.switchMode button:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.errorMessage {
+  background: rgba(255, 0, 0, 0.05);
+  color: #ff4d4d;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+}

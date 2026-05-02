@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.chartCard {
+  height: 400px;
+  padding: 2rem;
+  border-radius: 24px;
+}
+
+.insightsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    padding-bottom: 5rem;
+  }
+
+  .chartCard {
+    height: 350px;
+    padding: 1rem;
+  }
+
+  .insightsGrid {
+    grid-template-columns: 1fr;
+  }
+}
