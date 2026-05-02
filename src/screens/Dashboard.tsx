@@ -105,10 +105,20 @@ export const Dashboard: React.FC = () => {
     const total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
     
     const categories = expenses.reduce((acc: any, exp) => {
-      acc[exp.category] = (acc[exp.category] || 0) + exp.amount;
+      const cat = exp.category || 'Other';
+      acc[cat] = (acc[cat] || 0) + exp.amount;
       return acc;
     }, {});
-    const highest = Object.entries(categories).sort((a: any, b: any) => b[1] - a[1])[0]?.[0] || 'None';
+    
+    let highest = 'None';
+    let maxAmount = -1;
+    
+    Object.entries(categories).forEach(([cat, amount]: any) => {
+      if (amount > 0 && amount > maxAmount) {
+        maxAmount = amount;
+        highest = cat;
+      }
+    });
 
     return { 
       totalExpense: total, 

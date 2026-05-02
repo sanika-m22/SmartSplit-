@@ -90,6 +90,12 @@ export const AddExpense: React.FC = () => {
     const lowerTitle = title.toLowerCase();
     let suggested = false;
 
+    if (!lowerTitle) {
+      setCategory('Other');
+      setIsAiSuggested(false);
+      return;
+    }
+
     for (const [cat, keywords] of Object.entries(categories)) {
       if (keywords.some(k => lowerTitle.includes(k))) {
         setCategory(cat);
@@ -99,7 +105,10 @@ export const AddExpense: React.FC = () => {
       }
     }
 
-    if (!suggested) setIsAiSuggested(false);
+    if (!suggested) {
+      setCategory('Other');
+      setIsAiSuggested(false);
+    }
   }, [title]);
 
   const handleAddExpense = async (e: React.FormEvent) => {
