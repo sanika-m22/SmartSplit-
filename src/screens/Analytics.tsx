@@ -24,7 +24,7 @@ export const Analytics: React.FC = () => {
 
   // Aggregate expenses by category
   const categoryData = expenses.reduce((acc, curr) => {
-    const existing = acc.find(item => item.name === curr.category);
+    const existing = acc.find((item: any) => item.name === curr.category);
     if (existing) {
       existing.value += curr.amount;
     } else {
@@ -67,7 +67,7 @@ export const Analytics: React.FC = () => {
               dataKey="value"
               stroke="none"
             >
-              {categoryData.map((entry, index) => (
+              {categoryData.map((_entry: any, index: number) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
@@ -94,7 +94,7 @@ export const Analytics: React.FC = () => {
                 <span style={{ fontSize: '0.65rem', color: '#6366f1', background: 'rgba(99, 102, 241, 0.1)', padding: '0.1rem 0.5rem', borderRadius: '10px' }}>AI Insight</span>
               </div>
               {categoryData.length > 0 ? (
-                <p style={{ color: 'var(--color-text-muted)', fontSize: '0.85rem' }}>Most of your spending (₹{Math.max(...categoryData.map(c => c.value))}) went towards <strong>{categoryData.sort((a,b) => b.value - a.value)[0].name}</strong>.</p>
+                <p style={{ color: 'var(--color-text-muted)', fontSize: '0.85rem' }}>Most of your spending (₹{Math.max(...categoryData.map((c: any) => c.value))}) went towards <strong>{categoryData.sort((a: any, b: any) => b.value - a.value)[0].name}</strong>.</p>
               ) : (
                 <p style={{ color: 'var(--color-text-muted)', fontSize: '0.85rem' }}>No spending data available yet.</p>
               )}

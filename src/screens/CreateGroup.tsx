@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Users, UserPlus, ArrowRight, Sparkles, X } from 'lucide-react';
-import { motion } from 'framer-motion';
+
 
 import { createGroup } from '../api/apiClient';
 import styles from './CreateGroup.module.css';
@@ -13,9 +13,9 @@ export const CreateGroup: React.FC = () => {
   
   const [groupName, setGroupName] = useState('');
   const [tripType, setTripType] = useState('Friends Trip');
-  const [description, setDescription] = useState('');
+  const [description] = useState('');
   const [members, setMembers] = useState([{ name: `You (${currentUserName})` }, { name: '' }]);
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
 
   const handleAddMember = () => {
     setMembers([...members, { name: '' }]);
@@ -69,7 +69,7 @@ export const CreateGroup: React.FC = () => {
           
           <div style={{ background: 'rgba(255,255,255,0.4)', padding: '1rem', borderRadius: '16px', border: '1px solid rgba(0,0,0,0.02)' }}>
             <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>AI Features enabled</div>
-            <ul style={{ listSet: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               <li style={{ fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>✅ Smart Category Matching</li>
               <li style={{ fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>✅ Debt Minimization Engine</li>
               <li style={{ fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>✅ Real-time Analytics</li>

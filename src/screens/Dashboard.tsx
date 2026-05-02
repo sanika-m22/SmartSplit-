@@ -1,8 +1,8 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Search, Bell, Settings, Activity, User as UserIcon, Users as UsersIcon, Trash2 } from 'lucide-react';
+import { Search, Bell, Settings, Activity, User as UserIcon, Trash2 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { fetchExpenses, fetchUsers, fetchGroupDetails, deleteExpense as apiDeleteExpense } from '../api/apiClient';
+import { fetchExpenses, fetchGroupDetails, deleteExpense as apiDeleteExpense } from '../api/apiClient';
 import { calculateNetBalances, calculateSettlements, getUserSummary } from '../utils/balances';
 import styles from './Dashboard.module.css';
 
@@ -82,7 +82,7 @@ export const Dashboard: React.FC = () => {
           })
         }));
 
-        const sortedExpenses = normalizedExpenses.sort((a, b) => 
+        const sortedExpenses = normalizedExpenses.sort((a: any, b: any) => 
           new Date(b.date).getTime() - new Date(a.date).getTime()
         );
 

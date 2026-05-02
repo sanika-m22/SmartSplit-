@@ -1,4 +1,8 @@
-import type { Expense, User, Balance } from '../data/mockData';
+export interface Balance {
+  from: string;
+  to: string;
+  amount: number;
+}
 
 export const calculateNetBalances = (expenses: any[], users: any[]): Record<string, number> => {
   const netBalances: Record<string, number> = {};

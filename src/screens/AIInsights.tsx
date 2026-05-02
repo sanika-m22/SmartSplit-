@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Sparkles, TrendingUp, Wallet, Users, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area, BarChart, Bar } from 'recharts';
+import { Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area, BarChart, Bar } from 'recharts';
 import { fetchExpenses, fetchUsers } from '../api/apiClient';
 import styles from './AIInsights.module.css';
 

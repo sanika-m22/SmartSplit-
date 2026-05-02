@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Settings as SettingsIcon, Trash2, Shield, Bell, Lock, Smartphone, Globe, ChevronRight } from 'lucide-react';
+import { Trash2, Shield, Bell, Lock, Smartphone, Globe } from 'lucide-react';
 import { fetchGroups, deleteGroup, apiChangePassword } from '../api/apiClient';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -42,9 +42,7 @@ export const Settings: React.FC = () => {
     setPrefs((prev: any) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const handlePreferenceClick = (label: string) => {
-    // This is now handled by togglePref for specific keys
-  };
+
 
   const handleDeleteGroup = async (groupId: string, groupName: string) => {
     const confirmation = window.prompt(`Type "DELETE" to confirm deleting "${groupName}". This action is permanent.`);

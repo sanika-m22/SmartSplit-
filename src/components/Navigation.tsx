@@ -18,7 +18,7 @@ export const Navigation: React.FC = () => {
     { path: '/settings', icon: <Settings size={20} />, label: 'Settings' },
   ];
 
-  const sidebarVariants = {
+  const sidebarVariants: any = {
     hidden: { opacity: 0, x: -50 },
     visible: { 
       opacity: 1, 

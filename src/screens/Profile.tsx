@@ -66,6 +66,10 @@ export const Profile: React.FC = () => {
     return <div style={{ textAlign: 'center', padding: '2rem' }}>Please login to view profile</div>;
   }
 
+  if (loading) {
+    return <div style={{ textAlign: 'center', padding: '2rem' }}>Loading profile...</div>;
+  }
+
   return (
     <div className={styles.container}>
       
