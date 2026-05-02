@@ -20,7 +20,7 @@ export const AddExpense: React.FC = () => {
   const [paidBy, setPaidBy] = useState('');
   const [splitMethod, setSplitMethod] = useState('equal');
   const [splitDetails, setSplitDetails] = useState<Record<string, string>>({});
-  const [category, setCategory] = useState('Food');
+  const [category, setCategory] = useState('Other');
 
   useEffect(() => {
     // Reset split details when users list changes
@@ -214,12 +214,12 @@ export const AddExpense: React.FC = () => {
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                 >
+                  <option>Other</option>
                   <option>Food</option>
                   <option>Travel</option>
                   <option>Entertainment</option>
                   <option>Shopping</option>
                   <option>Stay</option>
-                  <option>Other</option>
                 </select>
               </div>
             </div>
