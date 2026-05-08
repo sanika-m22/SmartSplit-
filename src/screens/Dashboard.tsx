@@ -2,7 +2,7 @@ import React, { useMemo, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Search, Bell, Settings, Activity, User as UserIcon, Trash2 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { fetchExpenses, fetchGroupDetails, deleteExpense as apiDeleteExpense } from '../api/apiClient';
+import { fetchExpenses, fetchGroupDetails, deleteExpense as apiDeleteExpense, fetchUsers } from '../api/apiClient';
 import { calculateNetBalances, calculateSettlements, getUserSummary } from '../utils/balances';
 import styles from './Dashboard.module.css';
 
@@ -147,6 +147,16 @@ export const Dashboard: React.FC = () => {
     return u ? u.name : 'Unknown';
   };
 
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredExpenses = useMemo(() => {
+    if (!searchTerm) return expenses;
+    return expenses.filter(exp => 
+      exp.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      exp.category?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [expenses, searchTerm]);
+
   if (loading) return <div className={styles.loadingContainer}><Activity className="shimmer" /><h3>Loading Dashboard...</h3></div>;
 
   return (
@@ -154,12 +164,17 @@ export const Dashboard: React.FC = () => {
       <motion.div className={styles.topHeader} variants={itemVariants} initial="hidden" animate="visible">
         <div className={styles.searchBar}>
           <Search size={18} color="#888" />
-          <input type="text" placeholder="Search..." />
+          <input 
+            type="text" 
+            placeholder="Search expenses..." 
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
         <div className={styles.userActions}>
-          <div className={styles.iconBtn} onClick={() => navigate('/profile')}><UserIcon size={18} /></div>
-          <div className={styles.iconBtn} onClick={() => navigate('/settings')}><Bell size={18} /></div>
-          <div className={styles.iconBtn} onClick={() => navigate('/settings')}><Settings size={18} /></div>
+          <button className={styles.iconBtn} onClick={() => navigate('/profile')} title="Profile"><UserIcon size={18} /></button>
+          <button className={styles.iconBtn} onClick={() => alert('No new notifications')} title="Notifications"><Bell size={18} /></button>
+          <button className={styles.iconBtn} onClick={() => navigate('/settings')} title="Settings"><Settings size={18} /></button>
         </div>
       </motion.div>
 
@@ -220,7 +235,7 @@ export const Dashboard: React.FC = () => {
                 <button className={styles.dropdownBtn}>All Time</button>
               </div>
               <div className={styles.pillList}>
-                {expenses.map((exp, i) => (
+                {filteredExpenses.map((exp, i) => (
                   <motion.div 
                     key={exp._id || exp.id} 
                     className={`${styles.pillItem} ${i % 3 === 0 ? styles.pillPink : i % 3 === 1 ? styles.pillBlue : styles.pillGreen}`}

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Sparkles, TrendingUp, Wallet, Users, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area, BarChart, Bar } from 'recharts';
+import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area, BarChart, Bar } from 'recharts';
 import { fetchExpenses, fetchUsers } from '../api/apiClient';
 import styles from './AIInsights.module.css';
 
@@ -215,7 +215,7 @@ export const AIInsights: React.FC = () => {
                   <YAxis hide />
                   <Tooltip contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 5px 15px rgba(0,0,0,0.05)' }} />
                   <Area type="monotone" dataKey="actual" stroke="#93ACDC" fillOpacity={1} fill="url(#colorActual)" strokeWidth={3} />
-                  <Line type="monotone" dataKey="predicted" stroke="#F9C8EC" strokeDasharray="5 5" strokeWidth={2} dot={false} />
+                  <Area type="monotone" dataKey="predicted" stroke="#F9C8EC" strokeDasharray="5 5" fill="none" strokeWidth={2} />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
